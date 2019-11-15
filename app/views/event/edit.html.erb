@@ -1,0 +1,6 @@
+<h1>Event#edit</h1>
+<p>Find me in app/views/event/edit.html.erb</p>
+<%= form_tag event_event_images_path(@event.id), multipart: true do %>
+  <%= file_field_tag :event_image %>
+  <%= submit_tag "mettre à jour" %>
+<% end %>

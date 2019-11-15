@@ -1,0 +1,33 @@
+<!-- Affichage principal et des tous les gossips-->
+
+<div class="jumbotron jumbotron-fluid jumbotron-hero" style="height:100vh;">
+  <h1 class="display-4">Bienvenue chez EventBrite</h1>
+  <p class="lead">La communauté qui vous sort de la routine....</p>
+  <hr class="my-4">
+  <p>Accèder aux événements les plus selects et de votre région en un clic. </p>
+</div>
+
+<div class="container">
+
+  <br>
+  <h1>Nos événements</h1>
+  <br>
+
+  <!-- Afficher le contenu des events -->
+  <div class="card-columns">
+    <% @events.each_with_index do |event,index| %>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%= event.title %></h5>
+          <p class="card-text text-right">Commence le <%= event.start_date.to_formatted_s(:short) %></p>
+          <p class="card-text"> <%= event.description %></p><br>
+          <%= link_to "consulter", event_path(event.id), class: "card-link btn btn-primary text-right" %>
+          <br><br>
+          <p class="card-text"><small class="text-muted"> Créé le <%= event.created_at.to_formatted_s(:short) %></small></p>
+        </div>
+      </div>
+      <br>
+    <% end %>
+  </div>
+
+</div>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>EventbriteLikeProject</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+
+    <!-- Police Google -->
+    <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
+
+    <!-- Scripts JQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <!-- Font awesome-->
+    <script src="https://kit.fontawesome.com/ee93f8f380.js" crossorigin="anonymous"></script>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <!-- Ajout d'une navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <%= link_to "EventBrite-Like", root_path, class: "navbar-brand mb-0 h1" %>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <%= link_to "Créer un Event", new_event_path, class: "nav-link" %>
+          </li>
+
+        </ul>
+      </div>
+
+        <% if user_signed_in?  %>
+          <div class="collapse navbar-collapse ">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <%if @user.profile_picture.attached?%>
+                      <%= image_tag @user.profile_picture, alt: 'profile_picture', class:"rounded-circle", width:"30", height:"30" %>
+                    <%else%>
+                      <img src="https://www.jamf.com/jamf-nation/img/default-avatars/generic-user-purple.png" class="rounded-circle" width="30" height="30">
+                    <%end%>
+                </a>
+                <div class="dropdown-menu pr-3 dropdown-menu-lg-right" aria-labelledby="navbarDropdownMenuLink">
+                  <a class="dropdown-item" href="<%= user_path(current_user.id) %>">Mon compte</a>
+                  <a class="dropdown-item" href="<%= destroy_user_session_path %>" data-method="delete" >Déconnexion</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+        <% else  %>
+          <div class="dropdown">
+            <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Connexion
+            </button>
+            <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="<%= new_user_session_path %>">Se connecter</a>
+              <a class="dropdown-item" href="<%= new_user_registration_path %>">Créer un compte</a>
+            </div>
+          </div>
+
+        <% end  %>
+
+    </nav>
+
+
+
+    <%= yield %>
+
+    <%= render 'layouts/footer'%>
+  </body>
+</html>

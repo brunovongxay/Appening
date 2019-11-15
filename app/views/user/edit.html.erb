@@ -1,0 +1,59 @@
+<br>
+<div class="container d-flex flex-column align-items-center ">
+
+  <div class="">
+    <h2>Modifier <%= @user.first_name %></h2>
+  </div>
+
+  <div class="">
+
+    <div class="">
+
+      <%= form_for @user do |f| %>
+
+
+        <div class="field">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "email" %>
+        </div><br>
+
+        <div class="field">
+          <%= f.label :prenom %><br />
+          <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "form-control", placeholder: "prénom" %>
+        </div><br>
+
+        <div class="field">
+          <%= f.label :nom %><br />
+          <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "form-control", placeholder: "nom" %>
+        </div><br>
+
+        <div class="field">
+          <%= f.label :description %><br />
+          <%= f.text_area :description, autofocus: true, autocomplete: "description", class: "form-control", placeholder: "description" %>
+        </div><br>
+
+        <div class="actions">
+          <%= f.submit "Mettre à jour", class: "btn btn-primary"  %>
+        </div> <br>
+      <% end %>
+
+    </div>
+
+    <hr>
+
+    <div class="">
+
+      <p>Modifier la photo de profil</p>
+
+      <%= form_tag user_profile_pictures_path(@user), multipart: true do %>
+        <%= file_field_tag :profile_picture %>
+        <%= submit_tag "mettre à jour" %>
+      <% end %>
+
+    </div>
+
+
+  </div>
+
+
+</div>

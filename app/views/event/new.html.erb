@@ -1,0 +1,60 @@
+<!-- Message d'erreur --->
+<% if @event.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@event.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+    <ul>
+    <% @event.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<br>
+<div class="container d-flex flex-column align-items-center ">
+
+  <div class="">
+    <h2>Nouvel événement</h2>
+  </div><br>
+
+  <div class="">
+    <%= form_tag url_for(action: 'create'), method: "post" do %>
+
+      <div class="form-group">
+        <%= text_field_tag 'title', @event.title, class: 'form-control', autofocus: true, placeholder: "titre" %>
+      </div>
+      <br />
+
+      <div class="form-group">
+        <%= label_tag 'Date de début de votre événement' %>
+        <%= datetime_field_tag'start_date', @event.start_date, class: 'form-control', autofocus: true %>
+      </div>
+      <br />
+
+      <div class="form-group">
+        <%= number_field_tag 'duration', @event.duration, class: 'form-control', autofocus: true, placeholder: "Durée de l'événement (min)" %>
+      </div>
+      <br />
+
+      <div class="form-group">
+        <%= text_area_tag 'description', @event.description, class: 'form-control', autofocus: true, placeholder: "description" %>
+      </div>
+      <br />
+
+      <div class="form-group">
+        <%= number_field_tag 'price', @event.price, class: 'form-control', autofocus: true, placeholder: "price (€)" %>
+      </div>
+      <br />
+
+      <div class="form-group">
+        <%= text_field_tag 'location', @event.location, class: 'form-control', autofocus: true, placeholder: "location" %>
+      </div>
+      <br />
+
+      <%= submit_tag "Envoyer", class: 'btn btn-primary btn-lg btn-submit' %>
+
+    <% end %>
+  </div>
+
+</div>
