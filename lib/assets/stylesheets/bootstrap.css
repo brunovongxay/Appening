@@ -162,14 +162,12 @@ sup {
 }
 
 a {
-  color: #008cba;
   text-decoration: none;
   background-color: transparent;
 }
 
 a:hover {
   color: #00526e;
-  text-decoration: underline;
 }
 
 a:not([href]):not([tabindex]) {
@@ -369,36 +367,6 @@ template {
   display: none !important;
 }
 
-h1, h2, h3, h4, h5, h6,
-.h1, .h2, .h3, .h4, .h5, .h6 {
-  margin-bottom: 0.5rem;
-  font-weight: 300;
-  line-height: 1.2;
-}
-
-h1, .h1 {
-  font-size: 2.34375rem;
-}
-
-h2, .h2 {
-  font-size: 1.875rem;
-}
-
-h3, .h3 {
-  font-size: 1.640625rem;
-}
-
-h4, .h4 {
-  font-size: 1.40625rem;
-}
-
-h5, .h5 {
-  font-size: 1.171875rem;
-}
-
-h6, .h6 {
-  font-size: 0.9375rem;
-}
 
 .lead {
   font-size: 1.171875rem;
@@ -628,6 +596,7 @@ pre code {
   width: 100%;
   padding-right: 15px;
   padding-left: 15px;
+  
 }
 
 .col {
@@ -2024,7 +1993,7 @@ pre code {
   background-color: #fff;
   background-clip: padding-box;
   border: 1px solid #ccc;
-  border-radius: 0px;
+  border-radius: 5px;
   -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -4327,6 +4296,7 @@ input[type="button"].btn-block {
 .nav-link {
   display: block;
   padding: 0.5rem 1rem;
+  color: black;
 }
 
 .nav-link:hover, .nav-link:focus {
@@ -4349,8 +4319,8 @@ input[type="button"].btn-block {
 
 .nav-tabs .nav-link {
   border: 1px solid transparent;
-  border-top-left-radius: 0px;
-  border-top-right-radius: 0px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
@@ -4383,7 +4353,7 @@ input[type="button"].btn-block {
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
   color: #fff;
-  background-color: #008cba;
+  background-color: #000000;
 }
 
 .nav-fill .nav-item {
@@ -4870,7 +4840,8 @@ input[type="button"].btn-block {
   background-color: #fff;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 0px;
+  border-radius: 15px;
+  border: none;
 }
 
 .card > hr {
@@ -5296,7 +5267,7 @@ a.badge:hover, a.badge:focus {
 
 .badge-primary {
   color: #fff;
-  background-color: #008cba;
+  background-color: #000000;
 }
 
 a.badge-primary:hover, a.badge-primary:focus {
@@ -5422,9 +5393,8 @@ a.badge-dark:focus, a.badge-dark.focus {
           box-shadow: 0 0 0 0.2rem rgba(34, 34, 34, 0.5);
 }
 
-.jumbotron {
+ .jumbotron {
   padding: 4rem 2rem;
-  margin-bottom: 4rem;
   background-color: #eee;
   border-radius: 0px;
 }
@@ -5448,7 +5418,7 @@ a.badge-dark:focus, a.badge-dark.focus {
   padding-left: 80px;
 
   /* Tu lui donnes une image de background */
-  background-image: url("group-of-people-standing-inside-room.jpg");
+  background-image: url("/assets/martin-adams-pTCcJSBOTxY-unsplash.jpg");
 
   /* Centre l'image et la met bien sur tous les écrans */
   background-position: center;
@@ -5461,7 +5431,18 @@ a.badge-dark:focus, a.badge-dark.focus {
   color: #fff !important;
   box-sizing: border-box;
   opacity: 1;
+}
 
+.masque{
+  height:300px;
+  width:100%;
+  position: absolute;
+  margin-left: -80px;
+  bottom: 0;
+  background:-webkit-linear-gradient(top,  rgba(255, 230, 235,0) 0%, rgba(255, 230, 235,1) 100%);
+  background:-moz-linear-gradient(top,  rgba(255, 230, 235,0) 0%, rgba(255, 230, 235,1) 100%);
+  background:-o-linear-gradient(top,  rgba(255, 230, 235,0) 0%, rgba(255, 230, 235,1) 100%);
+  background:linear-gradient(top,  rgba(255, 230, 235,0) 0%, rgba(255, 230, 235,1) 100%);
 }
 
 .typewriter h1 {
@@ -7159,6 +7140,8 @@ button.bg-dark:focus {
 
 .rounded-circle {
   border-radius: 50% !important;
+  background-color: white;
+  margin-left: 15px;
 }
 
 .rounded-pill {
@@ -10574,6 +10557,7 @@ a.text-dark:hover, a.text-dark:focus {
   }
   .container {
     min-width: 992px !important;
+
   }
   .navbar {
     display: none;
@@ -11052,8 +11036,8 @@ label,
   color: red !important;
 }
 footer {
-  background-color: var(--secondary);
-  padding: 80px 0;
+  padding: 50px 0;
+  background-color: none;
 
   width: 100%;
   font-style: 0.8203125rem;
@@ -11115,6 +11099,7 @@ footer .media-body span {
 }
 footer .images-gellary ul {
   padding-left: 0;
+  border-radius: 25px
 }
 footer .images-gellary ul li {
   list-style: none;
@@ -11122,7 +11107,10 @@ footer .images-gellary ul li {
   margin: 0 3% 2% 0;
   width: 31%;
   position: relative;
+  border-radius: 25px
 }
 footer .images-gellary ul li:nth-child(3n) {
   margin: 0 0 1%;
+  border-radius: 25px
+
 }

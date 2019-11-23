@@ -1,83 +1,95 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>EventbriteLikeProject</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <link rel="shortcut icon" type="image/png" href="/assets/favicon-16x16.png"/>
+  <link href="https://fonts.googleapis.com/css?family=Anton|Gidugu|Manjari|Rubik+Mono+One|Varela+Round&display=swap" rel="stylesheet">
 
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <!-- Police Google -->
-    <link href="https://fonts.googleapis.com/css?family=Muli&display=swap" rel="stylesheet">
+  <title>Appening</title>
+</head>
+<body>
 
-    <!-- Scripts JQuery -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <!-- Ajout d'une navbar -->
+  <nav>
+    <a id="sticky" class="openbtn" onclick="openNav()"><i class="fas fa-chevron-right"></i></a>
+    <div id="mySidenav" class="sidenav">
+      <a class="closebtn" style="color: white" onclick="closeNav()">&times;</a>
 
-    <!-- Font awesome-->
-    <script src="https://kit.fontawesome.com/ee93f8f380.js" crossorigin="anonymous"></script>
+      <% if user_signed_in?  %>
+        <%if @user.profile_picture.attached?%>
+            <%= image_tag @user.profile_picture, alt:'profile_picture', class:"rounded-circle", width:"60", height:"60" %>
+          <%else%>
+            <img src="/assets/profile.png" class="rounded-circle" width="45" height="45">
+          <%end%>
+          <a href="<%= user_path(current_user.id) %>">Profile</a>
+          <hr>
+          <a href="<%= destroy_user_session_path %>" data-method="delete">Log out</a>
+          <hr>
+          <%= link_to "Appening", root_path, class: "navbar-brand mb-0 h1" %>
+          <hr>
+          <%= link_to "New Event", new_event_path, class: "nav-link" %>
+          <hr>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+          <% else  %>
+          <a href="<%= new_user_session_path %>">Log in</a>
+          <hr>
+          <a href="<%= new_user_registration_path %>">Sign up</a>
+          <hr>
+          <%= link_to "Appening", root_path, class: "navbar-brand mb-0 h1" %>
+          <hr>
+          <%= link_to "New Event", new_event_path, class: "nav-link" %>
+          <hr>
 
-  <body>
+          <% end  %>
+          <a href="contact.html">Contact</a>
 
-    <!-- Ajout d'une navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <%= link_to "EventBrite-Like", root_path, class: "navbar-brand mb-0 h1" %>
+        <div class="social">
+        <a href="https://www.facebook.com" target="_blank">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://www.instagram.com" target="_blank">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.linkedin.com" target="_blank">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://twitter.com" target="_blank">
+          <i class="fab fa-twitter"></i>
+        </a>
+        </div>
+    </div>
+  </nav>
 
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-      </button>
+  <!-- <div class="switch">
+    <input class="switch__input" type="checkbox" id="themeSwitch">
+    <label aria-hidden="true" class="switch__label" for="themeSwitch">On</label>
+    <div aria-hidden="true" class="switch__marker"></div>
+  </div> -->
 
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <%= link_to "Créer un Event", new_event_path, class: "nav-link" %>
-          </li>
+  <div class="myBtn" onclick="topFunction()" id="myBtn" title="Go to top">^</div>
 
-        </ul>
-      </div>
+  <%= yield %>
 
-        <% if user_signed_in?  %>
-          <div class="collapse navbar-collapse ">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <%if @user.profile_picture.attached?%>
-                      <%= image_tag @user.profile_picture, alt: 'profile_picture', class:"rounded-circle", width:"30", height:"30" %>
-                    <%else%>
-                      <img src="https://www.jamf.com/jamf-nation/img/default-avatars/generic-user-purple.png" class="rounded-circle" width="30" height="30">
-                    <%end%>
-                </a>
-                <div class="dropdown-menu pr-3 dropdown-menu-lg-right" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="<%= user_path(current_user.id) %>">Mon compte</a>
-                  <a class="dropdown-item" href="<%= destroy_user_session_path %>" data-method="delete" >Déconnexion</a>
-                </div>
-              </li>
-            </ul>
-          </div>
+  <%= render 'layouts/footer'%>
 
-        <% else  %>
-          <div class="dropdown">
-            <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Connexion
-            </button>
-            <div class="dropdown-menu dropdown-menu-lg-right" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="<%= new_user_session_path %>">Se connecter</a>
-              <a class="dropdown-item" href="<%= new_user_registration_path %>">Créer un compte</a>
-            </div>
-          </div>
-
-        <% end  %>
-
-    </nav>
-
-
-
-    <%= yield %>
-
-    <%= render 'layouts/footer'%>
-  </body>
+</body>
+<!-- Scripts JQuery -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="script_sidenav.js"></script>
+<script src="script_btn_top.js"></script>
+<!-- Font awesome-->
+<script src="https://kit.fontawesome.com/8813a93217.js" crossorigin="anonymous"></script>
 </html>

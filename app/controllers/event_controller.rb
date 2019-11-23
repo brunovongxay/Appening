@@ -17,16 +17,7 @@ class EventController < ApplicationController
   end
 
   def create
-    @event = Event.new(start_date: event_params[:start_date], duration: event_params[:duration], title: event_params[:title], description: event_params[:description], price: event_params[:price], location: event_params[:location], admin: current_user)
-
-
-      if @event.save
-        redirect_to root_path, notice: 'Evénement créé'
-      else
-        flash.now[:danger] = 'erreur dans la création du compte'
-        render 'new'
-      end
-
+    @event = Event.create(title: event_params[:title], start_date: event_params[:start_date], duration: event_params[:duration], description: event_params[:description], price: event_params[:price], location: event_params[:location], admin: current_user)
   end
 
   def edit

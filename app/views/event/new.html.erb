@@ -15,30 +15,29 @@
 <div class="container d-flex flex-column align-items-center ">
 
   <div class="">
-    <h2>Nouvel événement</h2>
+    <h2>New event</h2>
   </div><br>
 
-  <div class="">
+  <div class="text-center">
     <%= form_tag url_for(action: 'create'), method: "post" do %>
 
       <div class="form-group">
-        <%= text_field_tag 'title', @event.title, class: 'form-control', autofocus: true, placeholder: "titre" %>
-      </div>
+        <%= text_field_tag 'Title', @event.title, class: 'form-control', autofocus: true, placeholder: "Name event" %> </div>
       <br />
 
       <div class="form-group">
-        <%= label_tag 'Date de début de votre événement' %>
+        <%= label_tag 'When begins this event ?' %>
         <%= datetime_field_tag'start_date', @event.start_date, class: 'form-control', autofocus: true %>
       </div>
       <br />
 
       <div class="form-group">
-        <%= number_field_tag 'duration', @event.duration, class: 'form-control', autofocus: true, placeholder: "Durée de l'événement (min)" %>
+        <%= number_field_tag 'duration', @event.duration, class: 'form-control', autofocus: true, placeholder: "Duration" %>
       </div>
       <br />
 
       <div class="form-group">
-        <%= text_area_tag 'description', @event.description, class: 'form-control', autofocus: true, placeholder: "description" %>
+        <%= text_area_tag 'description', @event.description, class: 'form-control', autofocus: true, placeholder: "Description" %>
       </div>
       <br />
 
@@ -48,11 +47,11 @@
       <br />
 
       <div class="form-group">
-        <%= text_field_tag 'location', @event.location, class: 'form-control', autofocus: true, placeholder: "location" %>
+        <%= text_field_tag 'location', @event.location, class: 'form-control', autofocus: true, placeholder: "Location" %>
       </div>
       <br />
 
-      <%= submit_tag "Envoyer", class: 'btn btn-primary btn-lg btn-submit' %>
+      <%= submit_tag "Let go", class: 'btn btn-lg btn-submit' %>
 
     <% end %>
   </div>

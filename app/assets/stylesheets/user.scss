@@ -2,16 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-body{
-  margin-top: auto;
-    background-color: #f1f1f1;
-  }
+
   .border{
     border-bottom:1px solid #F1F1F1;
     margin-bottom:10px;
-  }
-  .main-secction{
-    box-shadow: 10px 10px 10px;
   }
   .image-section{
     padding: 0px;
@@ -27,14 +21,15 @@ body{
   }
   .user-left-part{
     margin: 0px;
+    width: 100%;
   }
   .user-image img{
-    width:100px;
-    height:100px;
+    width:150px;
+    height:150px;
   }
   .user-profil-part{
     padding-bottom:30px;
-    background-color:#FAFAFA;
+    background-color:#fff;
   }
   .follow{
     margin-top:70px;
@@ -94,7 +89,6 @@ body{
     padding: 5px;
   }
   .img-main-rightPart{
-    background-color: #FCFCFC;
     margin-top: auto;
   }
   .image-right-detail{
@@ -123,4 +117,3 @@ body{
   .nav-link{
     font-size: 1.2em;
   }
-  

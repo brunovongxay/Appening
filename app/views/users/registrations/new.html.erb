@@ -2,7 +2,7 @@
 <div class="container d-flex flex-column align-items-center ">
 
   <div class="">
-    <h2>Créer un compte</h2><br>
+    <h2>New account</h2><br>
   </div>
 
   <div class="">
@@ -10,34 +10,34 @@
       <%= render "devise/shared/error_messages", resource: resource %>
 
       <div class="field">
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "email" %>
+        <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "form-control", placeholder: "First name" %>
       </div><br>
 
       <div class="field">
-        <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "form-control", placeholder: "prénom" %>
+        <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "form-control", placeholder: "Last name" %>
       </div><br>
 
       <div class="field">
-        <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "form-control", placeholder: "nom" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Email" %>
       </div><br>
 
       <div class="field">
-        <%= f.text_area :description, autofocus: true, autocomplete: "description", class: "form-control", placeholder: "description" %>
+        <%= f.text_area :description, autofocus: true, autocomplete: "description", class: "form-control", placeholder: "Bio" %>
       </div><br>
 
       <div class="field">
         <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> caractères minimum)</em>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
         <% end %><br />
-        <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "mot de passe" %>
+        <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "Password" %>
       </div><br>
 
       <div class="field">
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "confirmer mot de passe" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "Confirm password" %>
       </div><br>
 
       <div class="actions">
-        <%= f.submit "Créer un compte", class: "btn btn-primary" %>
+        <%= f.submit "Registrer", class: "btn" %>
       </div>
     <% end %>
     <br>

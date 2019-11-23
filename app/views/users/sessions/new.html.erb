@@ -2,7 +2,7 @@
 <div class="container d-flex flex-column align-items-center ">
 
   <div class="">
-    <h2>Connexion</h2>
+    <h2>Sign in</h2>
   </div>
   <br>
 
@@ -11,25 +11,25 @@
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="field">
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "email" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Email" %>
       </div>
       <br>
 
       <div class="field">
-        <%= f.password_field :password, autocomplete: "current-password", class: "form-control", placeholder: "mot de passe" %>
+        <%= f.password_field :password, autocomplete: "current-password", class: "form-control", placeholder: "Password" %>
       </div>
       <br>
 
       <% if devise_mapping.rememberable? %>
         <div class="field">
           <%= f.check_box :remember_me %>
-          <%= f.label "se souvenir de moi" %>
+          <%= f.label "Remember me" %>
         </div>
       <% end %>
       <br>
 
       <div class="actions">
-        <%= f.submit "connexion", class: "btn btn-primary" %>
+        <%= f.submit "Log in", class: "btn" %>
       </div>
     <% end %>
     <br>

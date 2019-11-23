@@ -11,27 +11,27 @@
   <div class="card">
     <div class="card-body">
       <h5 class="card-title">
-        <%= @event.title %> (créé par : <%= @event.admin.first_name %> <%= @event.admin.last_name %>)
+        <%= @event.title %> (Created by : <%= @event.admin.first_name %> <%= @event.admin.last_name %>)
         <% if @event.participants.include? current_user %>
-          <span class="badge badge-primary">inscrit</span>
+          <span class="badge badge-primary">People's going</span>
         <% else %>
-          <span class="badge badge-secondary">places disponibles</span>
+          <span class="badge badge-secondary">Available piece</span>
         <% end %>
       </h5>
       <div class="d-flex justify-content-around">
         <p class="card-text"><small class="text-muted">Début : <%= @event.start_date.to_formatted_s(:short) %></small></p>
         <p class="card-text"><small class="text-muted">Fin : <%= @event.end_date.to_formatted_s(:short) %></small></p>
-        <%= link_to "retour à l'accueil", root_path, class: "text-right" %>
+        <%= link_to "Back home", root_path, class: "text-right" %>
       </div>
 
       <hr>
       <p class="card-text">Description : <%= @event.description %></p>
       <hr>
-      <p class="card-text">Prix : <%= @event.price %> €</p>
+      <p class="card-text">Price : <%= @event.price %> €</p>
       <hr>
-      <p class="card-text">Lieu : <%= @event.location %></p>
+      <p class="card-text">Location : <%= @event.location %></p>
       <hr>
-      <p class="card-text">Réserver votre place ici</p>
+      <p class="card-text">Take your ticket here</p>
 
       <% unless current_user == @event.admin %>
 
@@ -46,14 +46,14 @@
 
           <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                   data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                  data-description="Réserver votre événement"
+                  data-description="Reserve your event"
                   data-amount="<%= @event.price * 100 %>"
                   data-locale="auto"></script>
         <% end %>
 
       <% end %>
       <hr>
-      <h5>Participants</h5>
+      <h5>Who's going</h5>
 
       <% @event.participants.each_with_index do |participant,index| %>
         <div class="card">

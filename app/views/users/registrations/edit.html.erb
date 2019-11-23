@@ -2,7 +2,7 @@
 <div class="container d-flex flex-column align-items-center ">
 
   <div class="">
-    <h2>Modifier <%= resource_name.to_s.humanize %></h2>
+    <h2>Edit <%= resource_name.to_s.humanize %></h2>
   </div>
 
   <div class="">
@@ -12,7 +12,7 @@
 
       <div class="field">
         <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "email" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Email" %>
       </div><br>
 
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -21,42 +21,42 @@
 
       <div class="field">
         <%= f.label :prenom %><br />
-        <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "form-control", placeholder: "prénom" %>
+        <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "form-control", placeholder: "First name" %>
       </div><br>
 
       <div class="field">
         <%= f.label :nom %><br />
-        <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "form-control", placeholder: "nom" %>
+        <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "form-control", placeholder: "Last name" %>
       </div><br>
 
       <div class="field">
         <%= f.label :description %><br />
-        <%= f.text_area :description, autofocus: true, autocomplete: "description", class: "form-control", placeholder: "description" %>
+        <%= f.text_area :description, autofocus: true, autocomplete: "description", class: "form-control", placeholder: "Description" %>
       </div><br>
 
 
 
       <div class="field">
         <%= f.label :mot_de_passe %> <i>(laisser vide si vous ne souhaitez pas le changer)</i><br />
-        <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "nouveau mot de passe" %>
+        <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "New password" %>
         <% if @minimum_password_length %>
           <br />
-          <em><%= @minimum_password_length %> caractères minimum</em>
+          <em><%= @minimum_password_length %> characters minimum</em>
         <% end %>
       </div>
 
       <div class="field">
         <%= f.label :confirmation_du_mot_de_passe %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "confirmer nouveau mot de passe" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "Confirm password" %>
       </div><br>
 
       <div class="field">
         <%= f.label :mot_de_passe_actuel %> <i>(confirmer la modification)</i><br />
-        <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control", placeholder: "mot de passe actuel" %>
+        <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control", placeholder: "Current password" %>
       </div><br>
 
       <div class="actions">
-        <%= f.submit "Mettre à jour", class: "btn btn-primary"  %>
+        <%= f.submit "Update", class: "btn"  %>
       </div> <br>
     <% end %>
 
@@ -64,9 +64,9 @@
   <hr>
 
   <div class="">
-    <h3>Supprimer mon compte</h3>
+    <h3>Delete account</h3>
 
-    <p>Souhaitez-vous vraiment nous quitter? <%= button_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Etes-vous sur?" }, method: :delete %></p>
+    <p>Are you really sure to want leave us ? <%= button_to "Delete my account", registration_path(resource_name), data: { confirm: "Are you sure ?" }, method: :delete %></p>
 
     <%= link_to "retour", :back %>
   </div>

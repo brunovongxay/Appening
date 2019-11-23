@@ -1,12 +1,10 @@
 
 <!------ Include the above in your HEAD tag ---------->
+<div class="jumbotron jumbotron-fluid jumbotron-hero" style="height:50vh;">
 
-<body>
-    <div class="container main-secction">
+</div>
+    <div class="container">
         <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12 image-section">
-                <img src="https://i2.wp.com/siegehublot.com/wp-content/uploads/2019/03/plage-palmiers-bateaux-La-cote-sauvage-de-Tangalle-Les-plages-du-Sri-Lanka-et-plus-encore-Asie-Sri-Lanka.jpg?fit=2500%2C1647">
-            </div>
             <div class="row user-left-part">
                 <div class="col-md-3 col-sm-3 col-xs-12 user-profil-part pull-left">
                     <div class="row ">
@@ -14,10 +12,9 @@
                           <%if @user.profile_picture.attached?%>
                               <%= image_tag @user.profile_picture, alt: 'profile_picture', class:"rounded-circle" %>
                             <%else%>
-                              <img src="https://www.jamf.com/jamf-nation/img/default-avatars/generic-user-purple.png" class="rounded-circle">
+                              <img src="/assets/profile.png" class="rounded-circle">
                             <%end%>
                         </div>
-
                     </div>
                 </div>
                 <div class="col-md-9 col-sm-9 col-xs-12 pull-right profile-right-section">
@@ -28,8 +25,8 @@
                                     <h1><%= @user.first_name %> <%= @user.last_name %></h1>
 
                                 </div>
-                                <div class="col-md-4 col-sm-6 col-xs-6 profile-header-section1 text-right pull-rigth">
-                                    <a href="<%= edit_user_path%>" class="btn btn-primary btn-block">Modifier mon profil</a>
+                                <div class="col-md-4 col-sm-6 col-xs-6 profile-header-section1 pull-right">
+                                    <a href="<%= edit_user_path%>" class="btn btn-block">Edit Profile</a>
                                 </div>
                             </div>
                         </div>
@@ -53,7 +50,7 @@
                                                   <br>
                                                       <div class="row">
                                                           <div class="col-md-2">
-                                                              <label class="font-weight-bold">Nom</label>
+                                                              <label class="font-weight-bold">Name</label>
                                                           </div>
                                                           <div class="col-md-6">
                                                               <p><%= @user.first_name %> <%= @user.last_name %></p>
@@ -83,11 +80,11 @@
                                                     <div class="card">
                                                       <div class="card-body">
                                                         <h5 class="card-title"><%= event.title %></h5>
-                                                        <p class="card-text text-right">Commence le <%= event.start_date.to_formatted_s(:short) %></p>
+                                                        <p class="card-text text-right">Start <%= event.start_date.to_formatted_s(:short) %></p>
                                                         <p class="card-text"> <%= event.description %></p><br>
                                                         <%= link_to "consulter", event_path(event.id), class: "card-link btn btn-primary text-right" %>
                                                         <br><br>
-                                                        <p class="card-text"><small class="text-muted"> Créé le <%= event.created_at %></small></p>
+                                                        <p class="card-text"><small class="text-muted">Created since <%= event.created_at %></small></p>
                                                       </div>
                                                     </div>
                                                     <br>
@@ -100,15 +97,10 @@
                                 <div class="col-md-4 img-main-rightPart">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <div class="row image-right-part">
-                                                <div class="col-md-6 pull-left image-right-detail">
-                                                    <h6>Publicité</h6>
-                                                </div>
-                                            </div>
+
                                         </div>
                                         <a href="http://camaradecomerciozn.com/">
                                             <div class="col-md-12 image-right">
-                                                <img src="http://pluspng.com/img-png/bootstrap-png-bootstrap-512.png">
                                             </div>
                                         </a>
                                         <div class="col-md-12 image-right-detail-section2">
@@ -157,4 +149,3 @@
             </div>
         </div>
     </div>
-</body>
